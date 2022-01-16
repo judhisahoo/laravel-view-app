@@ -57,7 +57,23 @@ export default{
       //console.log(data);
       const resp=await axios.post('register',data);
       console.log(resp);
-      this.$router.push('/login');
+      if(resp.data==''){
+        this.$toasted.show("Unknown Error");
+      }else{
+        if(resp.data.type=='fail' || resp==null){
+          console.log('error');
+          if(resp.data.type==null){
+            this.$toasted.show("Invalid registration data");
+          }else if(resp.data.type=='fail'){
+            this.$toasted.show(resp.data.message[0]);
+          }
+        }else{
+          this.$toasted.show("logedin success fully");
+          setTimeout(() => {
+            this.$router.push('/login');
+          }, 2000);
+        }
+      }
     }
   }
 }

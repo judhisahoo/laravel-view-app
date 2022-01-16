@@ -49,13 +49,16 @@ export default{
     }
   },
   methods: {
-    async getAllProduct(){
-      const allproductsResponse= await axios.get('get-all-product');
-      return allproductsResponse.data;
-    }
+    
   },
   mounted: function() {
-    axios.get('get-all-product')
+    let tmpToken=localStorage.getItem('token');
+    console.log(tmpToken);
+    axios.get('get-all-product',{
+      headers:{
+        'Authorization' : 'Bearer '+localStorage.getItem('token')
+      }
+    })
     .then( result => {
       console.log( result );
       this.allproducts = result.data;

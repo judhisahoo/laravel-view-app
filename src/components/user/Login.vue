@@ -45,7 +45,7 @@ export default{
       if(resp.data==''){
         this.$toasted.show("Invalid Login");
       }else{
-        if(resp.data.type=='fail' && resp==null){
+        if(resp.data.type=='fail' || resp==null){
           console.log('error');
           this.$toasted.show("Invalid Login");
         }else{
