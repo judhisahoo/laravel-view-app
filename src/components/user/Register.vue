@@ -57,7 +57,7 @@ export default{
       //console.log(data);
       const resp=await axios.post('register',data);
       console.log(resp);
-      //this.$router.push('/login');
+      this.$router.push('/login');
     }
   }
 }
